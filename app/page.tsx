@@ -1,11 +1,9 @@
-import React from 'react'
+import React from "react";
 
-const page = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+async function page() {
+  const response = await fetch("http://localhost:1337/api/articles?populate=*");
+  const articles = await response.json();
+  return <div></div>;
+};
 
-export default page
+export default page;
