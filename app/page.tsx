@@ -10,6 +10,17 @@ const response = await fetch(
 );
 const articles = await response.json();
 
+// Path: ./src/app/page.tsx
+
+const formatDate = (date: Date) => {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  };
+  return new Date(date).toLocaleDateString("en-US", options);
+};
+
 const page = () => {
   
   return (
