@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import Image from "next/image";
 
 const response = await fetch(
@@ -16,7 +16,6 @@ const formatDate = (date: Date) => {
 };
 
 const page = () => {
-  
   return (
     <div>
       <div className="p-6">
@@ -57,6 +56,6 @@ const page = () => {
       </div>
     </div>
   );
-}
+};
 
-export default page
+export default page;
