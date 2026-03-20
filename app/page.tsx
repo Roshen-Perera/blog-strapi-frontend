@@ -1,5 +1,5 @@
 import React from "react";
-import AllArticles from "./components/page";
+import AllArticles from "./components/Articles";
 
 const page = () => {
   return (
