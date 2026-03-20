@@ -4,3 +4,9 @@ interface Props {
     id: string;
   };
 }
+
+interface Props {
+  params: {
+    id: string;
+  };
+}
