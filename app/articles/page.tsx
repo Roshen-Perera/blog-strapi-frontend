@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Articles from "./ui/articles";
+import Articles from "../ui/articles";
 
 const getArticles = async () => {
   const response = await fetch(
