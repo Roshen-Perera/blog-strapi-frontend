@@ -3,9 +3,23 @@
 import { use } from "react";
 import Image from "next/image";
 
-export default function Articles({ articles }: { articles: Promise<any> }) {
+export interface Article {
+  id: number;
+  title: string;
+  content: string;
+  cover?: {
+    url: string;
+  };
+  publishedAt: string;
+}
+
+export default function Articles({
+  articles,
+}: {
+  articles: Promise<{ data: Article[] }>;
+}) {
   const allArticles = use(articles);
-  const formatDate = (date: Date) => {
+  const formatDate = (date: string) => {
     const options: Intl.DateTimeFormatOptions = {
       year: "numeric",
       month: "2-digit",
@@ -23,14 +37,16 @@ export default function Articles({ articles }: { articles: Promise<any> }) {
               key={article.id}
               className="bg-white shadow-md rounded-lg overflow-hidden"
             >
-              <Image
-                className="w-full h-48 object-cover"
-                src={process.env.NEXT_PUBLIC_STRAPI_URL + article.cover.url}
-                alt={article.title}
-                width={180}
-                height={38}
-                priority
-              />
+              {article.cover && (
+                <Image
+                  className="w-full h-48 object-cover"
+                  src={process.env.NEXT_PUBLIC_STRAPI_URL + article.cover.url}
+                  alt={article.title}
+                  width={180}
+                  height={38}
+                  priority
+                />
+              )}
               <div className="p-4">
                 <h3 className="text-lg font-bold mb-2">{article.title}</h3>
                 <p className="text-gray-600 mb-4">{article.content}</p>
