@@ -27,13 +27,13 @@ export default function ArticlesList({
     };
     return new Date(date).toLocaleDateString("en-US", options);
   };
-  
+
   const articleList = allArticles?.data || [];
-  
+
   if (articleList.length === 0) {
     return <div className="text-center py-8">No articles found</div>;
   }
-  
+
   return (
     <ul>
       <div>

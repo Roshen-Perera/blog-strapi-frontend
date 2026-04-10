@@ -12,7 +12,7 @@ const getArticles = async () => {
     const articles = await response.json();
     return articles;
   } catch (error) {
-    console.error('Failed to fetch articles:', error);
+    console.error("Failed to fetch articles:", error);
     return { data: [] };
   }
 };
