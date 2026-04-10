@@ -2,11 +2,19 @@ import { Suspense } from "react";
 import ArticlesList from "./ArticlesList";
 
 const getArticles = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?populate=*`,
-  );
-  const articles = await response.json();
-  return articles;
+  try {
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_STRAPI_URL}/api/articles?populate=*`,
+    );
+    if (!response.ok) {
+      throw new Error(`API responded with status ${response.status}`);
+    }
+    const articles = await response.json();
+    return articles;
+  } catch (error) {
+    console.error('Failed to fetch articles:', error);
+    return { data: [] };
+  }
 };
 
 const AllArticles = () => {

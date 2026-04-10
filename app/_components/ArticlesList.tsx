@@ -27,12 +27,19 @@ export default function ArticlesList({
     };
     return new Date(date).toLocaleDateString("en-US", options);
   };
+  
+  const articleList = allArticles?.data || [];
+  
+  if (articleList.length === 0) {
+    return <div className="text-center py-8">No articles found</div>;
+  }
+  
   return (
     <ul>
       <div>
         <h2 className="text-2xl font-semibold mb-6">Articles</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allArticles.data.map((article) => (
+          {articleList.map((article) => (
             <article
               key={article.id}
               className="bg-white shadow-md rounded-lg overflow-hidden"
